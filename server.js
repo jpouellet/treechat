@@ -6,6 +6,7 @@ var express = require('express')
 server.listen(process.env.PORT);
 
 app.use(express.static(__dirname + '/static'));
+app.use(express.favicon(__dirname + '/static/favicon.ico'));
 
 io.sockets.on('connection', function(socket) {
 	socket.on('disconnect', function() {
