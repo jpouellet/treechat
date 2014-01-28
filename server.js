@@ -5,9 +5,7 @@ var express = require('express')
 
 server.listen(process.env.PORT);
 
-app.configure(function() {
-	server.use('/static', express.static(__dirname + '/static'));
-});
+app.use('/static', express.static(__dirname + '/static'));
 app.get('/', function(req, res) {
 	res.sendfile(__dirname + 'index.html');
 });
