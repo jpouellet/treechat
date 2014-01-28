@@ -5,7 +5,7 @@ var app = require('express')()
 server.listen(process.env.PORT);
 
 app.use(express.static('static'));
-app.get('/'), function(req, res) {
+app.get('/', function(req, res) {
 	res.sendfile(__dirname + 'index.html');
 });
 
