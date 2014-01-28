@@ -5,8 +5,7 @@ var express = require('express')
 
 server.listen(process.env.PORT);
 
-app.use('/static', express.static(__dirname + '/static'));
-app.use('/', express.static(__dirname + '/index.html'));
+app.use(express.static(__dirname + '/static'));
 
 io.sockets.on('connection', function(socket) {
 	socket.on('disconnect', function() {
