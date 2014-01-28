@@ -27,6 +27,9 @@ world	whats up	this is dog
 */
 
 window.addEventListener('load', function() {
+	var tree_area = document.getElementById('tree');
+	var stack_area = document.getElementById('stack');
+
 //	var data = [[[[[],[]]],[],[[[],[]]]]];
 var data = [];
 function gen(parent, depth) {
@@ -42,7 +45,19 @@ function gen(parent, depth) {
 	gen(child, depth);
 }
 gen(data, 10);
-	var tree_area = document.getElementById('tree');
+
+function getLorem() {
+	lorems[Math.floor(Math.random() * lorems.length)];
+}
+
+// generate stack
+var n = Math.ceil(Math.random() * 7) + 3;
+for (var i = 0; i < n; i++) {
+	var p = document.createElement('p');
+	p.textContent = getLorem();
+	stack_area.appendChild(p);
+}
+
 var from = false;
 	function buildTree(array, elem) {
 from = !from;
@@ -64,7 +79,7 @@ from = !from;
 		msg.appendChild(content);
 
 		var line = document.createElement('p');
-		line.textContent = lorems[Math.floor(Math.random() * lorems.length)];
+		line.textContent = getLorem();
 		content.appendChild(line);
 
 		if (array.length > 0) {
@@ -242,9 +257,6 @@ background-image: linear-gradient(to bottom, #cef8ff, #7fe0f8);
 		<h1>TreeChat</h1>
 	</header>
 	<div id="stack">
-		<p>Rocks</p>
-		<p>Rocks</p>
-		<p>Rocks</p>
 	</div>
 </body>
 </html>
