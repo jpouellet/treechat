@@ -4,6 +4,7 @@
 	<title>TreeChat Beta</title>
 
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/lorems.js"></script>
 	<script type="text/javascript">
 
 /*
@@ -26,7 +27,21 @@ world	whats up	this is dog
 */
 
 window.addEventListener('load', function() {
-	var data = [[[[[],[]]],[],[[[],[]]]]];
+//	var data = [[[[[],[]]],[],[[[],[]]]]];
+var data = [];
+function gen(parent, depth) {
+	if (!--depth)
+		return;
+
+	var child = [];
+	parent.push(child)
+	if (Math.random() > 0.95)
+		return;
+	if (Math.random() < 0.1)
+		gen(parent, depth);
+	gen(child, depth);
+}
+gen(data, 10);
 	var tree_area = document.getElementById('tree');
 var from = false;
 	function buildTree(array, elem) {
@@ -47,14 +62,10 @@ from = !from;
 		var content = document.createElement('div');
 		content.className = 'content';
 		msg.appendChild(content);
-		function line(text) {
-			var line = document.createElement('p');
-			line.textContent = text;
-			content.appendChild(line);
-		}
-		line('foo');
-		line('bar');
-		line('baz');
+
+		var line = document.createElement('p');
+		line.textContent = lorems[Math.floor(Math.random() * lorems.length)];
+		content.appendChild(line);
 
 		if (array.length > 0) {
 			var row = document.createElement('div');
@@ -179,7 +190,7 @@ background-image: linear-gradient(to bottom, #cef8ff, #7fe0f8);
 		}
 		#tree .node > .msg > .content {
 			padding: 4px;
-			flex: 3;
+			flex: 5;
 		}
 
 		#stack {
@@ -224,12 +235,11 @@ background-image: linear-gradient(to bottom, #cef8ff, #7fe0f8);
 	</style>
 </head>
 <body>
-	<header>
-		<img src="/logo-large.png" />
-		<h1>TreeChat</h1>
-	</header>
 	<div id="tree">
 	</div>
+	<header>
+		<h1>TreeChat</h1>
+	</header>
 	<div id="stack">
 		<p>Rocks</p>
 		<p>Rocks</p>
