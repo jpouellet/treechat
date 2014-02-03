@@ -1,0 +1,62 @@
+***
+note:
+	cid -- conversation id
+	mid -- message id (completely unique, not just unique per conversation)
+	uid -- user id
+***
+
+model:
+	conversation:
+		id: conversation id
+		root: <msg>
+		flat: {<mid>: <msg>, ...} // flat view of all messages for fast access
+		stack: [<stack_item>, ...]
+		people: [<uid>, ...]
+		view: <view>
+
+	stack_item:
+		conv: the owning conversation
+		id: <mid>
+		title: name to display on the stack
+
+	msg:
+		conv: the owning conversation
+		mid: unique message id
+		parent: the parent message, undefined for root
+		children: [<msg>, ...]
+		from: <uid>
+		content: message contents string
+		date: Date object timestamp
+		node: DOM element for this message
+
+	user:
+		uid: unique user id
+		name: name of user
+		avatar: url of image of user
+
+	<incoming>
+		type: enum{ message, conversation, user }
+		payload (message):
+			conv: cid
+			id: mid
+			parent: mid
+			from: uid
+			content: string
+			date: Date
+		payload (conversation):
+			id: cid
+			users: [uid, ...]
+
+	move(msg, new_parent)
+	handle(<incoming>)
+
+view:
+	stack: stack-container element
+	root: root msg element
+	/other stuff/
+
+(singletons)
+	conversations: {<cid>: <conversation>, ...]
+	users: {uid: <user>, ...}
+	you: <user>
+	active_conversation: <conversation>
