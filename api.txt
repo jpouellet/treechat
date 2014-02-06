@@ -20,11 +20,13 @@ model:
 		title: name to display on the stack
 
 	msg:
-		conv: the owning conversation
+		cid: the owning conversation
 		mid: unique message id
 		parent: the parent message, undefined for root
+		parentmid: message id of the parent, to be sent over the network
 		children: [<msg>, ...]
 		from: <uid>
+		fromuid: what's going to be sent over the network
 		content: message contents string
 		date: Date object timestamp
 		node: DOM element for this message
@@ -34,7 +36,7 @@ model:
 		name: name of user
 		avatar: url of image of user
 
-	<incoming>
+	<incoming> (pseudo type of what should be serialised)
 		type: enum{ message, conversation, user }
 		payload (message):
 			conv: cid
