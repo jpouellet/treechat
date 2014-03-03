@@ -9,4 +9,6 @@ Installation
 
 	Run npm install
 
-	npm start does not work yet, so run PORT=5000 node server.js
+	start mongod
+
+    node server.js

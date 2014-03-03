@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TreeChat</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<div class="container">
+            
+            <!-- navigation -->
+			<nav>
+				<div class="content">
+					<a href="/" class="logo">
+						<img src="/images/logo.png" alt="TreeChat">
+					</a>
+                    <ul class="menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Admin">Admin</a></li>
+                        <li><a href="/contacts">Contacts</a></li>
+                    </ul>
+                    <br class="clear" />
+				</div>
+			</nav>
+            
+            <!-- home page -->
+            <div class="home">
+                <!--<h1>TreeChat <small>For all your non-linear conversation needs</small></h1> -->
+                <div class="teaser">
+                    <div class="content">
+                        <img src="/images/home-teaser-image.jpg" alt="" class="home-teaser-image" />
+                        <h2>Treechat</h2>
+                        <p>For all your non-linear conversation needs</p>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- footer -->
+            <div class="footer">
+                <div class="content">
+                    Treechat &copy; 2014
+                </div>
+            </div>
+            
+		</div>
+	</body>
+</html>
